@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<zk xmlns:n="native">
+	<window border="normal" width="1900px" height="2000px" apply="com.controller.UserController">
+		<style>
+			.header > .z-label {
+				color: black;
+				font-size: 20px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color:black;
+				font-weight: bold;
+			}
+			.required{
+			color : red;
+			}
+			.title{
+			background-color: black
+			}
+		</style>
+		<vlayout width="100%" height="100%" style="display: flex; flex-direction: column; align-items: center; background-color: lightgrey; ">
+			<!-- Registration Form -->
+			<div style="text-align: center; margin-top: 20px;border: 2px solid black;background-color:lightgrey; ">
+				<div style="background: black; color: white; font-size: 35px; height: 45px; display: flex; align-items: center; justify-content: center;">User Registration Form</div>
+					<grid height="430px" width="800px" style="text-align: center; margin-top: 20px;" autopaging="true">
+					<columns>
+						<column width="10%" align="left"/>
+						<column width="30%" align="center"/>
+						<column width="20%"/>
+					</columns>
+						<rows>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Name:" />
+								</cell>
+								<cell>
+									<textbox id="name" instant="true" />
+								</cell>
+								<cell>
+									<label id="nameError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Email:"/>
+								</cell>
+								<cell>
+									<textbox id="email" instant="true" />
+								</cell>
+								<cell>
+									<label id="emailError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Address:"/>
+								</cell>
+								<cell>
+									<textbox id="address" />
+								</cell>
+								<cell>
+									<label id="addressError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Contact:"/>
+								</cell>
+								<cell>
+									<textbox id="contact" maxlength="10" instant="true"/>
+								</cell>
+								<cell>
+									<label id="contactError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Gender:"/>
+								</cell>
+								<cell>
+									<radiogroup id="gender" style="margin-right: 80px;">
+										<radio label="Male" value="Male" />
+										<radio label="Female" value="Female" />
+									</radiogroup>
+								</cell>
+								<cell>
+									<label id="genderError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Date of Birth:"/>
+								</cell>
+								<cell>
+									<datebox id="dateOfBirth" constraint="no future" format="dd/MM/yyyy" style="margin-right: 47px;" />
+								</cell>
+								<cell>
+									<label id="dateOfBirthError" style="color: red;" />
+								</cell>
+							</row>
+							<row>
+								<cell>
+								<label value="*" sclass="required"></label>
+									<label value="Status:" />
+								</cell>
+								<cell>
+									<listbox id="status" mold="select" style="padding: 5px;margin-right: 140px;" >
+										<listitem label="Active" value="Active" selected="true" />
+										<listitem label="Inactive" value="Inactive" />
+									</listbox>
+								</cell>
+								<cell>
+									<label id="statusError" style="color: red;" />
+								</cell>
+							</row>
+						</rows>
+					</grid>
+					<button id="save" label="Save"	style="background-color: black;margin-right: 20px;margin-top: 10px;margin-bottom: 10px;" />
+					<button id="reset" label="Reset" style="background-color: black;margin-right: 50px;margin-top: 10px;margin-bottom: 10px;" />
+				</div>
+			<separator height="20px" />
+			<!-- View Form -->
+			<div style="margin-top: 5px; font-weight: bold;">
+				<div sclass="header">User Records</div>
+				<hlayout>
+					<div style=" height: 60px;margin-left: 15px;">Rows per page</div>
+					<listbox id="rowsPerPage" mold="select" style="text-align: left;padding: 3px">
+						<listitem label="5" value="5" selected="true" />
+						<listitem label="10" value="10" />
+						<listitem label="15" value="15" />
+					</listbox>
+				</hlayout>
+				<listbox id="userList"	style="text-align: center;background-color: black;">
+					<listhead style="text-align : center;">
+						<listheader label="Name" sclass="title" />
+						<listheader label="Email" sclass="title"/>
+						<listheader label="Address"	sclass="title" />
+						<listheader label="Contact"	sclass="title" />
+						<listheader label="Gender"	sclass="title" />
+						<listheader label="Date of Birth"  sclass="title"/>
+						<listheader label="Status" sclass="title" />
+						<listheader label="Actions"	sclass="title" />
+					</listhead>
+				</listbox>
+				<paging id="paging" pageSize="5" totalSize="0" />
+			</div>
+		</vlayout>
+	</window>
+</zk>
